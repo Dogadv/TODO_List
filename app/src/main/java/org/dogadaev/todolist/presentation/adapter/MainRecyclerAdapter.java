@@ -3,7 +3,6 @@ package org.dogadaev.todolist.presentation.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -60,13 +59,13 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapte
 
         private MainViewModel mainViewModel;
 
-        public ViewHolder(@NonNull View itemView, MainViewModel mainViewModel) {
+        ViewHolder(@NonNull View itemView, MainViewModel mainViewModel) {
             super(itemView);
             this.mainViewModel = mainViewModel;
             ButterKnife.bind(this, itemView);
         }
 
-        public void bind(TaskItem taskItem) {
+        void bind(TaskItem taskItem) {
             itemTitle.setText(taskItem.getTitle());
             deleteButton.setOnClickListener(v -> mainViewModel.deleteTaskItem(taskItem));
         }

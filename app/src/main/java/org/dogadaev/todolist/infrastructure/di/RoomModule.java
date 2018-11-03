@@ -1,7 +1,5 @@
 package org.dogadaev.todolist.infrastructure.di;
 
-import android.app.Application;
-
 import org.dogadaev.todolist.application.TodoApplication;
 import org.dogadaev.todolist.data.TaskItemDao;
 import org.dogadaev.todolist.data.TaskItemDatabase;
@@ -38,7 +36,7 @@ public class RoomModule {
 
     @Provides
     @Singleton
-    TaskItemDatabase provideTaskItemDatabase(Application application) { return database; }
+    TaskItemDatabase provideTaskItemDatabase() { return database; }
 
     @Provides
     @Singleton

@@ -20,7 +20,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
-    private final String TAG = this.getClass().getSimpleName();
 
     @BindView(R.id.main_recycler)
     RecyclerView recyclerView;
