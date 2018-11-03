@@ -5,14 +5,11 @@ import org.dogadaev.todolist.data.model.TaskItem;
 
 import java.util.List;
 
-import javax.inject.Inject;
-
 import androidx.lifecycle.LiveData;
 
 public class TaskItemRepository {
     private final TaskItemDao taskItemDao;
 
-    @Inject
     public TaskItemRepository(TaskItemDao taskItemDao) {
         this.taskItemDao = taskItemDao;
     }

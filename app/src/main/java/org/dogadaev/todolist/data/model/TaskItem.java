@@ -7,21 +7,20 @@ import androidx.room.PrimaryKey;
 @Entity
 public class TaskItem {
 
-    @PrimaryKey
     @NonNull
-    private String id;
+    @PrimaryKey(autoGenerate = true)
+    private Long id;
     private String title;
 
-    public TaskItem(String id, String title) {
-        this.id = id;
+    public TaskItem(String title) {
         this.title = title;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

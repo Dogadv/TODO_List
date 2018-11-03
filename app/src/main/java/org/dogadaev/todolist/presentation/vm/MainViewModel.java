@@ -7,7 +7,8 @@ import java.util.List;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
-import io.reactivex.Observable;
+import io.reactivex.Completable;
+import io.reactivex.Single;
 import io.reactivex.schedulers.Schedulers;
 
 public class MainViewModel extends ViewModel {
@@ -27,13 +28,16 @@ public class MainViewModel extends ViewModel {
     }
 
     public void insertTaskItem(TaskItem taskItem) {
-        Observable.create(emitter -> repository.insertTaskItem(taskItem))
+        Single.create(emitter -> emitter.onSuccess(repository.insertTaskItem(taskItem)))
                 .subscribeOn(Schedulers.io())
                 .subscribe();
     }
 
     public void deleteTaskItem(TaskItem taskItem) {
-        Observable.create(emitter -> repository.deleteTaskItem(taskItem))
+        Completable.create(emitter -> {
+            repository.deleteTaskItem(taskItem);
+            emitter.onComplete();
+        })
                 .subscribeOn(Schedulers.io())
                 .subscribe();
     }

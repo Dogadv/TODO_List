@@ -37,8 +37,4 @@ public class RoomModule {
     @Provides
     @Singleton
     TaskItemDatabase provideTaskItemDatabase() { return database; }
-
-    @Provides
-    @Singleton
-    ViewModelProvider.Factory provideViewModelFactory(TaskItemRepository repository) { return new MainViewModelFactory(repository); }
 }
