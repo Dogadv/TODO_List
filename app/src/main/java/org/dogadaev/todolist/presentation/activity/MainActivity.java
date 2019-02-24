@@ -28,20 +28,33 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
-
-        mainViewModel = ViewModelProviders.of(this, ((TodoApplication) getApplication()).getMainViewModelFactory()).get(MainViewModel.class);
-
         ButterKnife.bind(this);
 
+        mainViewModel =
+                ViewModelProviders.of(
+                        this,
+                        ((TodoApplication) getApplication())
+                                .getMainViewModelFactory()
+                ).get(MainViewModel.class
+                );
+
+        setUpRecycler();
+
+        findViewById(R.id.main_button).setOnClickListener(v -> {
+            mainViewModel.insertTaskItem(
+                    new TaskItem(editText.getText().toString())
+            );
+            editText.getText().clear();
+        });
+    }
+
+    private void setUpRecycler() {
         MainRecyclerAdapter mainRecyclerAdapter = new MainRecyclerAdapter(mainViewModel);
+
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(mainRecyclerAdapter);
         mainViewModel.getTaskItems().observe(this, mainRecyclerAdapter::setData);
-
-        findViewById(R.id.main_button).setOnClickListener(v -> {
-            mainViewModel.insertTaskItem(new TaskItem(editText.getText().toString()));
-            editText.getText().clear();
-        });
     }
 }
