@@ -3,4 +3,5 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="main_edit_text_hint">Type your task</string>
     <string name="main_button_title">Add</string>
+    <string name="cd_delete_button">Delete button</string>
 </resources>

@@ -15,16 +15,12 @@ public class MainViewModel extends ViewModel {
 
     private TaskItemRepository repository;
 
-    public MainViewModel(TaskItemRepository repository) {
+    MainViewModel(TaskItemRepository repository) {
         this.repository = repository;
     }
 
     public LiveData<List<TaskItem>> getTaskItems() {
         return repository.getTaskItems();
-    }
-
-    public LiveData<TaskItem> getTaskItemById(String id) {
-        return repository.getTaskItemById(id);
     }
 
     public void insertTaskItem(TaskItem taskItem) {
