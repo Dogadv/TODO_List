@@ -30,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+//        dfdfdfdfdf
+
         mainViewModel = ViewModelProviders.of(this, ((TodoApplication) getApplication()).getMainViewModelFactory()).get(MainViewModel.class);
 
         ButterKnife.bind(this);
